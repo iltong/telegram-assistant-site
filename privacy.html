@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="텔레그램 개인비서의 개인정보처리방침. Google Calendar 권한, Claude API와 Telegram으로의 데이터 전달, 보관과 삭제 방식을 설명합니다.">
+  <meta name="theme-color" content="#132c32"><title>개인정보처리방침 · 텔레그램 개인비서</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <header class="header wrap"><a class="brand" href="./"><span class="brand-icon" aria-hidden="true">ㅂ</span><span>텔레그램 개인비서<small>by iltong</small></span></a><nav aria-label="주 메뉴"><a href="./">앱 소개</a><a href="privacy.html" aria-current="page">개인정보처리방침</a><a href="terms.html">이용약관</a></nav></header>
+  <main id="main" class="legal wrap">
+    <p class="eyebrow">PRIVACY</p><h1>개인정보처리방침</h1><p class="date">시행 및 최종 수정일: 2026년 11월 17일</p>
+    <p>이 방침은 <a href="https://github.com/iltong">iltong</a>이 운영하는 1인용 앱 <strong>텔레그램 개인비서</strong>와 공개 안내 사이트에 적용됩니다. 앱은 운영자 본인이 사용하는 텔레그램 봇이며, 불특정 다수의 회원가입을 받지 않습니다.</p>
+    <aside class="notice"><p><strong>Google Calendar 연동은 준비 중입니다.</strong> 현재 공개 안내 사이트와 미연결 봇은 Google 계정에 접근하지 않습니다. 아래 Google 관련 내용은 연동 기능에 적용할 처리 범위이며, 기능 구현과 데이터 처리 확인을 마친 뒤 본인의 OAuth 승인을 받아 연결합니다.</p></aside>
+    <section aria-labelledby="purpose"><h2 id="purpose">1. 처리하는 정보와 이용 목적</h2>
+      <table><thead><tr><th scope="col">정보</th><th scope="col">목적과 범위</th></tr></thead><tbody>
+        <tr><td>Telegram 계정·대화 정보</td><td>연결한 본인 계정 확인, 메시지 처리, 답변과 알림 전달에 필요한 사용자·채팅 ID와 메시지 내용 및 처리 식별자.</td></tr>
+        <tr><td>사용자가 입력한 기록</td><td>메모, 지출, 일정, 리마인더의 저장·조회·변경·삭제와 예약 알림. 요청에 입력한 제목, 본문, 금액, 시각 등의 정보.</td></tr>
+        <tr><td>대화 및 처리 기록</td><td>대화 문맥 유지, 중단된 요청 복구와 중복 실행 방지에 필요한 응답·도구 실행 결과·처리 상태. AI에 보내는 최근 문맥의 분량과 DB의 전체 보관 범위는 다릅니다.</td></tr>
+        <tr><td>웹페이지 정보</td><td>사용자가 요약을 요청한 공개 URL과 해당 페이지의 제목·본문 일부.</td></tr>
+        <tr><td>Google Calendar 정보<br>(연동 후)</td><td>캘린더 선택을 위한 목록·이름·ID, 선택한 캘린더 일정의 제목·시작과 종료 시각·시간대·종일/반복 정보 및 필요한 장소·설명. 일정 관리와 오늘의 일정 브리핑에 사용합니다.</td></tr>
+        <tr><td>인증·운영 정보</td><td>API 인증 정보, 연결 후의 OAuth 토큰, 연결 설정 및 알림 발송 상태. 외부 서비스 연결과 정해진 작업 수행에 사용하며 공개 사이트에 게시하지 않습니다.</td></tr>
+      </tbody></table>
+    </section>
+    <section aria-labelledby="google"><h2 id="google">2. Google 계정 연결과 권한</h2>
+      <p>Google 계정 비밀번호를 봇에 입력하지 않습니다. Google의 로그인·동의 화면에서 권한을 승인하는 OAuth 방식을 사용합니다. 운영자 본인이 연결한 계정과 선택한 캘린더를 대상으로 기능을 제공할 예정입니다.</p>
+      <ul><li><strong>앱이 만든 캘린더 관리:</strong> ‘개인비서’ 전용 캘린더 생성과 해당 캘린더의 일정 조회·등록·변경·삭제에 사용합니다.</li><li><strong>기존 캘린더 일정 읽기:</strong> 선택한 캘린더의 일정을 조회해 브리핑에 포함합니다. 기존 캘린더의 일정을 수정하는 권한은 요청하지 않습니다.</li><li><strong>캘린더 목록 읽기:</strong> 브리핑에 사용할 캘린더를 선택하는 데 사용합니다.</li></ul>
+      <p>Google의 일정 읽기 권한 자체는 계정이 접근할 수 있는 여러 캘린더에 적용될 수 있습니다. 앱의 실제 조회 대상은 사용자가 선택한 캘린더로 제한하도록 구현합니다. 권한을 거부하면 해당 권한이 필요한 기능을 사용하지 않습니다.</p>
+      <p>Google API로 받은 정보는 사용자가 요청한 일정 관리·조회·브리핑에만 사용합니다. 운영자는 이 정보를 판매하거나 광고 타기팅, 감시 또는 범용 AI 모델 학습에 사용하지 않습니다. 필요한 기능 제공을 위한 전달은 다음 항목에 설명합니다.</p>
+      <p>텔레그램 개인비서는 Google API에서 받은 정보를 사용할 때 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>와 그 Limited Use 요건을 준수합니다.</p>
+    </section>
+    <section aria-labelledby="sharing"><h2 id="sharing">3. 외부 서비스로 전달되는 정보</h2>
+      <ul><li><strong>Telegram:</strong> 사용자가 보낸 메시지, 봇의 답변·알림과 요청한 내보내기 파일을 처리합니다. 연동 후에는 브리핑에 포함한 일정 정보도 본인의 개인 대화로 전달됩니다. Telegram 봇 대화는 비밀대화가 아닙니다.</li><li><strong>Anthropic / Claude API:</strong> 자연어 요청을 해석할 때 메시지, 최근 대화와 도구가 반환한 관련 메모·지출·일정 등의 내용이 전송됩니다. 명시 명령의 결과도 이후 자연어 대화 문맥에 포함될 수 있습니다. 웹 요약에는 요청한 URL·제목·본문 일부가 전달됩니다. Google 연동 후 AI를 사용하는 일정 대화나 브리핑에는 필요한 일정 정보가 전송될 수 있으며, 연결 시 이 전달 방식을 안내합니다. Google 비밀번호와 OAuth 토큰은 AI 입력에 포함하지 않는 방식으로 구현합니다.</li><li><strong>Google:</strong> OAuth 인증과 Calendar API 요청을 처리합니다. 연결 후 사용자가 요청한 일정 내용은 전용 Google 캘린더에 저장됩니다.</li><li><strong>Google Cloud 또는 운영자가 선택한 서버:</strong> 봇의 실행 환경과 데이터 저장 공간을 제공합니다. 현재 배포 대상은 운영자의 Google Cloud VM입니다.</li></ul>
+      <p>운영자는 요청한 기능 제공에 필요한 범위에서 서비스를 사용합니다. 각 서비스에서의 처리와 보관에는 해당 제공자의 약관·개인정보 정책이 적용되며, 운영자가 모든 제공자의 기록을 직접 삭제하거나 보관 기간을 보장할 수는 없습니다.</p>
+      <p class="sources">제공자 정책: <a href="https://telegram.org/privacy">Telegram</a> · <a href="https://www.anthropic.com/legal/commercial-terms">Anthropic API 약관 및 데이터 처리 조건</a> · <a href="https://policies.google.com/privacy">Google</a></p>
+    </section>
+    <section aria-labelledby="storage"><h2 id="storage">4. 저장과 보관 기간</h2>
+      <p>봇의 기록·대화 처리 이력·예약 상태는 운영자의 PC 또는 VM의 SQLite 데이터베이스에 저장됩니다. DB 자체 암호화는 현재 사용하지 않으며 운영체제 계정과 파일 접근 권한으로 보호합니다.</p>
+      <p>현재 데이터에 일괄적인 자동 보관 만료 기간은 없습니다. 운영자가 삭제할 때까지 DB, 응답·실행 이력, 내보낸 CSV, 자동 백업과 업데이트 복구용 백업에 정보가 남을 수 있습니다. 백업과 내보내기 파일은 자동 삭제되지 않습니다.</p>
+      <p>인증 정보는 공개 소스·안내 사이트와 분리해 보관합니다. Google OAuth 토큰의 구체적인 저장·삭제 절차는 연결 기능과 함께 제공하고, 사용을 시작하기 전에 확인할 수 있도록 안내합니다.</p>
+    </section>
+    <section aria-labelledby="delete"><h2 id="delete">5. 삭제와 연결 해제</h2>
+      <ul><li>봇의 개별 항목 삭제는 해당 기록과 연결된 예약을 삭제합니다. 이미 만들어진 대화·응답·실행 이력, 백업, 내보내기 사본까지 모두 지우는 기능은 아닙니다.</li><li><code>/reset</code>은 앞으로 사용할 대화 문맥을 초기화합니다. 저장된 전체 기록이나 실행 이력을 완전히 삭제하는 명령이 아닙니다.</li><li>운영자가 완전한 로컬 삭제를 원하면 봇을 종료한 뒤 DB와 관련 백업·내보내기·운영 로그의 사본을 확인하여 직접 삭제해야 합니다. 복구용 백업에도 이전 데이터가 포함될 수 있습니다.</li><li>Google 연결 후에는 <a href="https://myaccount.google.com/connections">Google 계정의 연결된 앱 관리</a>에서 권한을 철회할 수 있습니다. 권한 철회는 이후 접근을 제한하며, Google 캘린더에 이미 저장한 일정이나 로컬 사본을 자동으로 삭제하지 않습니다.</li><li>Telegram 대화와 파일은 Telegram에서 별도로 삭제하고, Google 캘린더에 생성한 일정·전용 캘린더는 Google Calendar에서 별도로 관리합니다.</li></ul>
+    </section>
+    <section aria-labelledby="website"><h2 id="website">6. 이 안내 사이트의 데이터 처리</h2>
+      <p>이 사이트는 정적 안내 페이지입니다. 회원가입, Google 로그인, 개인 일정 입력, 광고, 운영자가 설치한 방문 분석 도구 또는 쿠키를 사용하지 않습니다. 외부 폰트·이미지를 불러오지 않습니다.</p>
+      <p>호스팅 제공자인 GitHub Pages는 보안 목적으로 방문자의 IP 주소를 기록할 수 있습니다. 자세한 내용은 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보처리방침</a>을 확인하세요. 외부 링크를 누르면 해당 서비스의 정책이 적용됩니다.</p>
+    </section>
+    <section aria-labelledby="contact"><h2 id="contact">7. 문의 및 방침 변경</h2>
+      <p>운영자: <a href="https://github.com/iltong">iltong</a>. 안내 내용이나 데이터 처리에 대한 일반 문의는 <a href="https://github.com/iltong/telegram-assistant-site/issues">이 사이트의 GitHub Issues</a>로 받습니다. 문의는 공개되므로 개인정보, 실제 일정 내용, 인증 JSON, 비밀번호, API 키 또는 토큰을 올리지 마세요. 민감한 사항은 내용 없이 비공개 연락 방법을 먼저 요청하세요.</p>
+      <p>처리 범위가 달라지면 이 페이지와 최종 수정일을 갱신하고 필요한 경우 봇에서 변경 내용을 알립니다. Google 데이터의 이용 목적이나 전달 범위가 달라지는 경우 변경된 방식을 알리고 필요한 동의를 받은 뒤 적용합니다.</p>
+    </section>
+    <a class="text-link back" href="./">← 앱 소개로 돌아가기</a>
+  </main>
+  <footer class="footer wrap"><p>© 2026 iltong · 텔레그램 개인비서</p><div><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a></div></footer>
+</body>
+</html>
